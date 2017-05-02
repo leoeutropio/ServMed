@@ -1,17 +1,31 @@
+package pojo;
 
 public class Medico {
 	String nome;
 	String crm;
 	String especializacao;
+	String email;
+	String expediente;
+	String endereco;
+	int cpf;
+	int idade;
+	int telefone;
+	
 	
 	public Medico (){
 		
 	}
 	
-	public Medico (String nome, String crm, String especializacao){
+	public Medico (String nome, String crm, String especializacao, String email, String expediente,
+			int idade, int telefone,int cpf){
 		this.nome = nome;
 		this.crm = crm;
 		this.especializacao = especializacao;
+		this.email = email;
+		this.expediente = expediente;
+		this.idade = idade;
+		this.telefone = telefone;
+		this.cpf = cpf;
 	}
 
 	public String getNome() {
