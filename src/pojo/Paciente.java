@@ -9,7 +9,7 @@ public class Paciente extends Pessoa {
 	}
 
 	public Paciente(String plano){
-		super()
+		super();
 		this.plano = plano;
 
 	}

@@ -1,4 +1,6 @@
-Package pojo;
+package pojo;
+
+import java.util.ArrayList;
 
 public class Consultorio{
     String nome;

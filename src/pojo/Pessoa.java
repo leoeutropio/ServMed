@@ -1,4 +1,6 @@
-Package pojo;
+package pojo;
+
+import java.sql.Date;
 
 public class Pessoa{
 

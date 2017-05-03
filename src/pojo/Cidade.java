@@ -1,8 +1,10 @@
 package pojo;
 
+import java.util.ArrayList;
+
 public class Cidade {
     String nome;
-    ArrayList<Regiao>regioes = new ArrayList<Regiao>regioes();
+    ArrayList<Regiao>regioes = new ArrayList<Regiao>();
 
     public Cidade(){}
 

@@ -1,4 +1,6 @@
-Package pojo;
+package pojo;
+
+import java.sql.Date;
 
 public class Consulta{
     Consultorio local;
@@ -16,14 +18,14 @@ public class Consulta{
         this.agendada = agendada;
     }
 
-    public Consultorio getLocal(){
+    public String getLocal(){
         return this.local.getNome() + local.getEndereco();
     }
     public void setLocal(Consultorio local){
         this.local = local;
     }
 
-    public Medico getMedico(){
+    public String getMedico(){
         return this.medico.getNome();
     }
     public void setMedico(Medico medico){
