@@ -27,7 +27,7 @@ public class Pessoa{
     public String getNome(){
         return this.nome;
     }
-    public String geCpf(){
+    public String getCpf(){
         return this.cpf;
     }
     public String getEmail(){
