@@ -5,7 +5,7 @@ import java.util.List;
 import pojo.Pessoa;
 
 public class PessoaDao {
-	List<Pessoa> pessoas;
+	public List<Pessoa> pessoas;
 	
 	
 	public PessoaDao(){

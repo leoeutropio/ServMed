@@ -4,7 +4,7 @@ import java.util.List;
 
 import pojo.*;
 public class PacienteDao {
-	List<Paciente> clientes;
+	public List<Paciente> clientes;
 	
 	public PacienteDao(){
 		this.clientes = new ArrayList<Paciente>();
@@ -14,17 +14,26 @@ public class PacienteDao {
 		this.clientes = c;
 	}
 	
-	public void addPaciente(Paciente p){
-		
+	public boolean addPaciente(Paciente p){
+		if(this.searchByPlano(p.getPlano()) != null){
+			this.clientes.add(p);
+			return true;
+		}
+		else
+			return false;
 	}
 	
-	public Paciente searchByPlano(Paciente p){
+	public Paciente searchByPlano(String p){
 		for(Paciente aux:clientes){
-			if(aux.getPlano() == p.getPlano()){
+			if(aux.getPlano() == p){
 				return aux;
 			}
 		}
 		return null;
+	}
+	
+	public void remove(Paciente p){
+		this.clientes.remove(searchByPlano(p.getPlano()));
 	}
 	
 }
