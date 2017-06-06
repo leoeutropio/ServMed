@@ -1,10 +1,10 @@
 package dao;
 
-import pojo.Medico;
-import pojo.Pessoa;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import dominio.Medico;
+import dominio.Pessoa;
 
 public class MedicoDao {
 	public List<Medico> medicos;

@@ -1,4 +1,4 @@
-package pojo;
+package dominio;
 
 import java.sql.Date;
 

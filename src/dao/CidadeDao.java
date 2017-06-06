@@ -3,7 +3,7 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import pojo.Cidade;
+import dominio.Cidade;
 
 public class CidadeDao {
 	private List<Cidade> cidades;

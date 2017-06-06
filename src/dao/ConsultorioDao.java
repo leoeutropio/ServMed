@@ -3,7 +3,7 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import pojo.Consultorio;
+import dominio.Consultorio;
 
 public class ConsultorioDao {
 	List<Consultorio> consultorios;

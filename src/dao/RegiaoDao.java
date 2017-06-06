@@ -3,7 +3,7 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import pojo.Regiao;
+import dominio.Regiao;
 
 public class RegiaoDao {
 	public List<Regiao> local;

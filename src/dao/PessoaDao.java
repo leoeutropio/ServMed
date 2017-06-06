@@ -2,7 +2,7 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import pojo.Pessoa;
+import dominio.Pessoa;
 
 public class PessoaDao {
 	public List<Pessoa> pessoas;

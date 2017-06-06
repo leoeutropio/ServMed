@@ -1,4 +1,4 @@
-package pojo;
+package dominio;
 
 public class Medico extends Pessoa {
 
