@@ -43,8 +43,19 @@ public class PessoaDao {
 		return null;
 	}
 	
-	public void remove(Pessoa p){
-		this.pessoas.remove(searchByCPF(p.getCpf()));
+	public void list(){
+		System.out.println("------Lista de Pessoas----------------");
+		for(Pessoa aux: this.pessoas){
+			System.out.println(">>>Nome: " + aux.getNome());
+			System.out.println(">>>CPF: " + aux.getCpf());
+			System.out.println(">>>Email: " + aux.getEmail());
+			System.out.println(">>>Endereço: " + aux.getEndereco());
+			System.out.println(">>>Telefone: " + aux.getTelefone());
+		}
+	}
+	
+	public boolean remove(Pessoa p){
+		return this.pessoas.remove(searchByCPF(p.getCpf()));
 	}
 	
 	public void atualizarEmail(Pessoa p ,String email){

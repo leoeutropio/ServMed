@@ -8,6 +8,7 @@ public class Consulta{
     Paciente paciente;
     Date horario;
     boolean agendada;
+    String avaliacao;
 
     public Consulta(){}
 
@@ -50,4 +51,17 @@ public class Consulta{
         this.paciente = paciente;
     }
 
+	public String getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(String avaliacao) {
+		this.avaliacao = avaliacao;
+	}
+
+	public void setAgendada(boolean agendada) {
+		this.agendada = agendada;
+	}
+
+    
 }

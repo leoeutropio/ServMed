@@ -32,8 +32,19 @@ public class PacienteDao {
 		return null;
 	}
 	
-	public void remove(Paciente p){
-		this.clientes.remove(searchByPlano(p.getPlano()));
+	public void list(){
+		System.out.println("------Lista de Pacientes----------------");
+		for(Paciente aux: this.clientes){
+			System.out.println(">>>Nome: " + aux.getNome());
+			System.out.println(">>>CPF: " + aux.getCpf());
+			System.out.println(">>>Email: " + aux.getEmail());
+			System.out.println(">>>Endereço: " + aux.getEndereco());
+			System.out.println(">>>Telefone: " + aux.getTelefone());
+		}
+	}
+	
+	public boolean remove(Paciente p){
+		return this.clientes.remove(searchByPlano(p.getPlano()));
 	}
 	
 }
