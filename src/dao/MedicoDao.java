@@ -8,8 +8,7 @@ import javax.inject.Named;
 
 import dominio.Medico;
 
-
-@Named(value = "medController")
+@Named(value = "medicoControle")
 @RequestScoped
 public class MedicoDao {
 	public List<Medico> medicos;
