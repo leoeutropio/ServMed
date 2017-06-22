@@ -5,13 +5,18 @@ import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import dominio.Medico;
 
-@Named(value = "medicoControle")
+
+@Named
 @RequestScoped
 public class MedicoDao {
 	public List<Medico> medicos;
+	private EntityManager entityManager;
+	
 	
 	public MedicoDao(){
 		this.medicos = new ArrayList<Medico>();
@@ -37,6 +42,11 @@ public class MedicoDao {
 		}
 		else
 			return false;
+	}
+	
+	public List<Medico> findMedicos() {
+		TypedQuery<Medico> query = entityManager.createNamedQuery("findAllMedicos", Medico.class);
+		return query.getResultList();
 	}
 	
 	public void list(){
