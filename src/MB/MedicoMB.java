@@ -31,13 +31,13 @@ public class MedicoMB {
 		this.medico = medico;
 	}
 	
-	public String addNewEmployee() {
+	public String addNewMedico() {
 		dao.addMedico(medico);
 		listaMedicos = dao.findMedicos();
 		return "listademedicos";
 	}
 	
-	public String removeEmployee(){
+	public String removeMedico(){
 		dao.removeMedico(medico);
 		listaMedicos = dao.findMedicos();
 		return "listademedicos";

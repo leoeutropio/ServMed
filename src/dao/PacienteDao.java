@@ -2,9 +2,13 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import dominio.*;
 public class PacienteDao {
 	public List<Paciente> clientes;
+	private EntityManager entityManager;
 	
 	public PacienteDao(){
 		this.clientes = new ArrayList<Paciente>();
@@ -30,6 +34,11 @@ public class PacienteDao {
 			}
 		}
 		return null;
+	}
+	
+	public List<Paciente> findPacientes() {
+		TypedQuery<Paciente> query = entityManager.createNamedQuery("findAllPacientes", Paciente.class);
+		return query.getResultList();
 	}
 	
 	public void list(){
