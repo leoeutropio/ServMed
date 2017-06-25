@@ -3,10 +3,14 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import dominio.Cidade;
 
 public class CidadeDao {
 	private List<Cidade> cidades;
+	private EntityManager entityManager;
 	
 	public CidadeDao(){
 		this.cidades = new ArrayList<Cidade>();
@@ -31,6 +35,11 @@ public class CidadeDao {
 	
 	public boolean removeCidade(Cidade aux){
 		return this.cidades.remove(searchCidade(aux));
+	}
+	
+	public List<Cidade> findCidades() {
+		TypedQuery<Cidade> query = entityManager.createNamedQuery("findAllCidades", Cidade.class);
+		return query.getResultList();
 	}
 	
 }

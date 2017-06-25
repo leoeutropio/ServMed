@@ -19,6 +19,7 @@ public class MedicoMB {
 	private Medico medico = new Medico();
 	
 	public List<Medico> getMedicos() {
+		listaMedicos = dao.findMedicos();
 		return listaMedicos;
 	}
 	public void setMedicos(List<Medico> medicos) {

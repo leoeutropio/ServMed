@@ -15,14 +15,15 @@ import dominio.Paciente;
 public class PacienteMB {
 	@Inject PacienteDao dao;
 	
-	private List<Paciente> listaMedicos = new ArrayList<>();
+	private List<Paciente> listaPacientes = new ArrayList<>();
 	private Paciente paciente = new Paciente();
 	
 	public List<Paciente> getListaMedicos() {
-		return listaMedicos;
+		listaPacientes = dao.findPacientes();
+		return listaPacientes;
 	}
-	public void setListaMedicos(List<Paciente> listaMedicos) {
-		this.listaMedicos = listaMedicos;
+	public void setListaMedicos(List<Paciente> listaPacientes) {
+		this.listaPacientes = listaPacientes;
 	}
 	public Paciente getPaciente() {
 		return paciente;
@@ -33,13 +34,13 @@ public class PacienteMB {
 	
 	public String addNewPaciente() {
 		dao.addPaciente(paciente);
-		listaMedicos = dao.findPacientes();
-		return "listademedicos";
+		listaPacientes = dao.findPacientes();
+		return "listadepacientes";
 	}
 	
 	public String removePaciente(){
 		dao.remove(paciente);
-		listaMedicos = dao.findPacientes();
-		return "listademedicos";
+		listaPacientes = dao.findPacientes();
+		return "listadepacientes";
 	}
 }

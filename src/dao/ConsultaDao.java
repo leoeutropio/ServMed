@@ -3,10 +3,14 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import dominio.Consulta;
 
 public class ConsultaDao {
 	List<Consulta> consultas;
+	private EntityManager entityManager;
 	
 	public ConsultaDao(){
 		this.consultas = new ArrayList<Consulta>();
@@ -27,6 +31,12 @@ public class ConsultaDao {
 		}
 		return false;
 	}
+	
+	public List<Consulta> findConsultas() {
+		TypedQuery<Consulta> query = entityManager.createNamedQuery("findAllConsultas", Consulta.class);
+		return query.getResultList();
+	}
+	
 	
 	public boolean removeConsulta(Consulta a){
 		return this.consultas.remove(searchConsulta(a));	}

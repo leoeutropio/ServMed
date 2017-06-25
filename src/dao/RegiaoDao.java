@@ -3,10 +3,14 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import dominio.Regiao;
 
 public class RegiaoDao {
 	public List<Regiao> local;
+	private EntityManager entityManager;
 	
 	public RegiaoDao(){
 		this.local = new ArrayList<Regiao>();
@@ -22,6 +26,11 @@ public class RegiaoDao {
 			return true;
 		}
 		return false;
+	}
+	
+	public List<Regiao> findRegioes() {
+		TypedQuery<Regiao> query = entityManager.createNamedQuery("findAllRegioes", Regiao.class);
+		return query.getResultList();
 	}
 	
 	public boolean removeRegiao(Regiao local){
