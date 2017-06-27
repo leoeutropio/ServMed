@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:body>
+	<h1>Servicos do Paciente</h1>
+	<h1>adicionar</h1>
+	<h:panelGrid columns="6" >
+         <h:outputLabel value="Name : "/>
+         	<h:inputText value="#{controlePaciente.paciente.nome}"/>
+         <h:outputLabel value="CPF : "/>
+         	<h:inputText value="#{controlePaciente.paciente.cpf}"/>
+         <h:outputLabel value="Email : "/>
+         	<h:inputText value="#{controlePaciente.paciente.email}"/>
+         <h:outputLabel value="Data de nascimento : "/>
+         	<h:inputText value="#{controlePaciente.paciente.aniversario}"/>
+         			<f:convertDateTime pattern="dd/mm/yyyy"/>
+         <h:outputLabel value="Endereço : "/>
+         	<h:inputText value="#{controlePaciente.paciente.endereco}"/>
+         <h:outputLabel value="Telefone : "/>
+         	<h:inputText value="#{controlePaciente.paciente.telefone}"/>
+         	<h:commandButton action="#{controlePaciente.gravar}" value="adicionar novo" />
+     </h:panelGrid>
+     <h1>listar</h1>
+     <h:dataTable value="#{controlePaciente.getPacientes}"  var="paciente"
+		border="1">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Name" />
+			</f:facet>
+			<h:outputText />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Cpf" />
+			</f:facet>
+			<h:outputText />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Plano" />
+			</f:facet>  
+		</h:column>
+	</h:dataTable>
+     
+
+
+</h:body>
+
+</html>

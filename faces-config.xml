@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+ <managed-bean>
+  <managed-bean-name>medicoMB</managed-bean-name>
+  <managed-bean-class>MB.MedicoMB</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>cidadeMB</managed-bean-name>
+  <managed-bean-class>MB.CidadeMB</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>consultaMB</managed-bean-name>
+  <managed-bean-class>MB.ConsultaMB</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>consultorioMB</managed-bean-name>
+  <managed-bean-class>MB.ConsultorioMB</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>pacienteMB</managed-bean-name>
+  <managed-bean-class>MB.PacienteMB</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>regiaoMB</managed-bean-name>
+  <managed-bean-class>MB.RegiaoMB</managed-bean-class>
+  <managed-bean-scope>request</managed-bean-scope>
+ </managed-bean>
+ <application/>
+</faces-config>

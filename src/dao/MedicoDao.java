@@ -4,6 +4,7 @@ package dao;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
@@ -12,7 +13,7 @@ import javax.persistence.TypedQuery;
 
 import dominio.Medico;
 
-@RequestScoped
+@Dependent
 @Stateless
 public class MedicoDao {
 	@PersistenceContext(unitName="ServMed")
