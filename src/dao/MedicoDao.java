@@ -40,4 +40,19 @@ public class MedicoDao {
 		return medico;
 	}
 	
+	public Medico editar(Medico medico){
+		try{
+			System.out.println("medico atualizada com sucesso!");
+			manager.merge(medico);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return medico;
+	}
+	
+	public Medico remove(Medico medico){
+		manager.remove(manager.merge(medico));
+		return medico;
+	}
+	
 }

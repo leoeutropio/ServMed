@@ -33,4 +33,19 @@ public class PacienteDao {
 		Paciente paciente = manager.find(Paciente.class, id);
 		return paciente;
 	}	
+	
+	public Paciente editar(Paciente paciente){
+		try{
+			System.out.println("Paciente atualizada com sucesso!");
+			manager.merge(paciente);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return paciente;
+	}
+	
+	public Paciente remove(Paciente paciente){
+		manager.remove(manager.merge(paciente));
+		return paciente;
+	}
 }

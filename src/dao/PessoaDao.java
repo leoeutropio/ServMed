@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import dominio.Pessoa;
+import dominio.Pessoa;
 
 public class PessoaDao {
 	@PersistenceContext(unitName="ServMed")
@@ -31,6 +32,21 @@ public class PessoaDao {
 	
 	public Pessoa searchById(Integer id){
 		Pessoa pessoa = manager.find(Pessoa.class, id);
+		return pessoa;
+	}
+	
+	public Pessoa editar(Pessoa pessoa){
+		try{
+			System.out.println("Pessoa atualizada com sucesso!");
+			manager.merge(pessoa);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return pessoa;
+	}
+	
+	public Pessoa remove(Pessoa pessoa){
+		manager.remove(manager.merge(pessoa));
 		return pessoa;
 	}
 

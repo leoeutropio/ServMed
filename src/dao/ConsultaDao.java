@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import dominio.Cidade;
 import dominio.Consulta;
 
 @Stateless
@@ -34,6 +35,21 @@ public class ConsultaDao {
 	
 	public Consulta searchById(Integer id){
 		Consulta consulta = manager.find(Consulta.class, id);
+		return consulta;
+	}
+	
+	public Consulta editar(Consulta consulta){
+		try{
+			System.out.println("Cidade atualizada com sucesso!");
+			manager.merge(consulta);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return consulta;
+	}
+	
+	public Consulta remove(Consulta consulta){
+		manager.remove(manager.merge(consulta));
 		return consulta;
 	}
 

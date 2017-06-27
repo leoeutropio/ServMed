@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-
+import dominio.Regiao;
 import dominio.Regiao;
 
 public class RegiaoDao {
@@ -33,6 +33,21 @@ public class RegiaoDao {
 	
 	public Regiao searchById(Integer id){
 		Regiao regiao = manager.find(Regiao.class, id);
+		return regiao;
+	}
+	
+	public Regiao editar(Regiao regiao){
+		try{
+			System.out.println("Regiao atualizada com sucesso!");
+			manager.merge(regiao);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return regiao;
+	}
+	
+	public Regiao remove(Regiao regiao){
+		manager.remove(manager.merge(regiao));
 		return regiao;
 	}
 }

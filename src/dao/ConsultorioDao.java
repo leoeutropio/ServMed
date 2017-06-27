@@ -37,4 +37,19 @@ public class ConsultorioDao {
 		Consultorio consultorio = manager.find(Consultorio.class, id);
 		return consultorio;
 	}
+	
+	public Consultorio editar(Consultorio consultorio){
+		try{
+			System.out.println("consultorio atualizada com sucesso!");
+			manager.merge(consultorio);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return consultorio;
+	}
+	
+	public Consultorio remove(Consultorio consultorio){
+		manager.remove(manager.merge(consultorio));
+		return consultorio;
+	}
 }

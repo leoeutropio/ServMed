@@ -37,4 +37,18 @@ public class CidadeDao {
 		return cidade;
 	}
 	
+	public Cidade editar(Cidade cidade){
+		try{
+			System.out.println("Cidade atualizada com sucesso!");
+			manager.merge(cidade);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return cidade;
+	}
+	
+	public Cidade remove(Cidade cidade){
+		manager.remove(manager.merge(cidade));
+		return cidade;
+	}
 }
