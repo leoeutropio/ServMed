@@ -1,44 +1,40 @@
 package dao;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import dominio.Consultorio;
 
+
+@Stateless
 public class ConsultorioDao {
-	List<Consultorio> consultorios;
-	private EntityManager entityManager;
-	
-	public ConsultorioDao(){
-		this.consultorios = new ArrayList<Consultorio>();
-	}
+	@PersistenceContext(unitName="ServMed")
+	private EntityManager manager;
 	
 	
-	public Consultorio searchConsultorio(Consultorio a){
-		for(Consultorio aux:this.consultorios){
-			if(aux.equals(aux))
-				return aux;
+	public Consultorio save(Consultorio consultorio){
+		try{
+			manager.persist(consultorio);
+			System.out.println("consultorio persistida com sucesso!");
+		}catch(Exception e){
+			e.printStackTrace();
 		}
-		return null;
+		return consultorio;
 	}
 	
-	public List<Consultorio> findConsultorios() {
-		TypedQuery<Consultorio> query = entityManager.createNamedQuery("findAllConsultorios", Consultorio.class);
-		return query.getResultList();
+	public List<Consultorio> listarconsultorio(){
+		TypedQuery<Consultorio> query = manager.createQuery("Selected c from consultorio c", Consultorio.class);
+		List<Consultorio> consultorios = query.getResultList();
+		return consultorios;
 	}
 	
-	public boolean addConsultorio(Consultorio a){
-		if(searchConsultorio(a) == null){
-			this.consultorios.add(a);
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean removeConsultorio(Consultorio a){
-		return this.consultorios.remove(searchConsultorio(a));
+	public Consultorio searchById(Integer id){
+		Consultorio consultorio = manager.find(Consultorio.class, id);
+		return consultorio;
 	}
 }

@@ -3,6 +3,7 @@ package MB;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -13,34 +14,41 @@ import dominio.Paciente;
 @Named(value = "controlePaciente")
 @RequestScoped
 public class PacienteMB {
-	@Inject PacienteDao dao;
-	
-	private List<Paciente> listaPacientes = new ArrayList<>();
+	@EJB
+	PacienteDao dao;
+
 	private Paciente paciente = new Paciente();
+
 	
-	public List<Paciente> getListaMedicos() {
-		listaPacientes = dao.findPacientes();
-		return listaPacientes;
-	}
-	public void setListaMedicos(List<Paciente> listaPacientes) {
-		this.listaPacientes = listaPacientes;
-	}
-	public Paciente getPaciente() {
+	
+	public Paciente getpaciente() {
 		return paciente;
 	}
-	public void setPaciente(Paciente paciente) {
+
+	public void setpaciente(Paciente paciente) {
 		this.paciente = paciente;
 	}
-	
-	public String addNewPaciente() {
-		dao.addPaciente(paciente);
-		listaPacientes = dao.findPacientes();
-		return "listadepacientes";
+
+	private void clearObjects() {
+		this.paciente = new Paciente();
+
 	}
 	
-	public String removePaciente(){
-		dao.remove(paciente);
-		listaPacientes = dao.findPacientes();
-		return "listadepacientes";
+	
+	public List<Paciente> getpacientes(){
+		return dao.listarpaciente();
 	}
+	
+	public List<Paciente> getListapacientes(){
+		return this.getpacientes();
+	}
+
+	public void gravar(){
+		
+		dao.save(paciente);
+		clearObjects();
+		
+		
+	}
+
 }

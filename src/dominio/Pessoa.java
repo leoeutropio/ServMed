@@ -1,10 +1,17 @@
 package dominio;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Pessoa{
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+
+@Entity
+public class Pessoa implements Serializable{
 
     String nome;
+    @Id
     String cpf;
     String email;
     Date aniversario;

@@ -1,10 +1,29 @@
 package dominio;
 
 import java.util.ArrayList;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import java.io.Serializable;
 
-public class Cidade {
-    String nome;
-    ArrayList<Regiao>regioes = new ArrayList<Regiao>();
+
+@Entity
+@SequenceGenerator(name = "SEQ_CIDADE", initialValue = 1, allocationSize = 1, sequenceName = "seq_cidade")
+public class Cidade implements Serializable {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CIDADE")
+	@Column(name="id_cidade")
+	private int id;
+    private String nome;
+    
+    
+   // @OneToMany(mappedBy="cidade")
+    private ArrayList<Regiao>regioes;
 
     public Cidade(){}
 
@@ -25,4 +44,21 @@ public class Cidade {
     public void setListRegiao(ArrayList<Regiao> regioes){
         this.regioes = regioes;
     }
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public ArrayList<Regiao> getRegioes() {
+		return regioes;
+	}
+
+	public void setRegioes(ArrayList<Regiao> regioes) {
+		this.regioes = regioes;
+	}
+    
 }

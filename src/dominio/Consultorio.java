@@ -1,11 +1,29 @@
 package dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Consultorio{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+
+
+@Entity
+@SequenceGenerator(name = "SEQ_CONSULTORIO", initialValue = 1, allocationSize = 1, sequenceName = "seq_consultorio")
+public class Consultorio implements Serializable{
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CONSULTORIO")
+    @Column(name = "id_Consultorio")
+	private int id;
     String nome;
     String endereco;
     String telefone;
+   // @OneToMany(mappedBy = "consultorio")
     ArrayList<Medico> medicos = new ArrayList<Medico>();
 
     public Consultorio(){}

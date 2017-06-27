@@ -1,7 +1,14 @@
 package dominio;
 
-public class Medico extends Pessoa {
+import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
+public class Medico extends Pessoa implements Serializable {
+
+	@Column(name="id_Crm")
 	String crm;
 	String especializacao;
 	String expediente;

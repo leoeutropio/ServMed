@@ -3,6 +3,7 @@ package MB;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -13,35 +14,42 @@ import dominio.Regiao;
 @Named(value = "controleRegiao")
 @RequestScoped
 public class RegiaoMB {
-	@Inject RegiaoDao dao;
-	
-	private List<Regiao> listaRegioes = new ArrayList<>();
+	@EJB
+	RegiaoDao dao;
+
 	private Regiao regiao = new Regiao();
+
 	
-	public List<Regiao> getListaRegioes() {
-		listaRegioes = dao.findRegioes();
-		return listaRegioes;
-	}
-	public void setListaRegioes(List<Regiao> listaRegioes) {
-		this.listaRegioes = listaRegioes;
-	}
-	public Regiao getRegiao() {
+	
+	public Regiao getregiao() {
 		return regiao;
 	}
-	public void setRegiao(Regiao regiao) {
+
+	public void setregiao(Regiao regiao) {
 		this.regiao = regiao;
 	}
-	
-	public String addNewRegiao() {
-		dao.addRegiao(regiao);
-		listaRegioes = dao.findRegioes();
-		return "listaderegioes";
+
+	private void clearObjects() {
+		this.regiao = new Regiao();
+
 	}
 	
-	public String removeRegiao(){
-		dao.removeRegiao(regiao);
-		listaRegioes = dao.findRegioes();
-		return "listaderegioes";
+	
+	public List<Regiao> getregiaos(){
+		return dao.listarregiao();
 	}
+	
+	public List<Regiao> getListaregiaos(){
+		return this.getregiaos();
+	}
+
+	public void gravar(){
+		
+		dao.save(regiao);
+		clearObjects();
+		
+		
+	}
+
 	
 }

@@ -3,6 +3,7 @@ package MB;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -13,34 +14,41 @@ import dominio.Consultorio;
 @Named(value = "controleConsultorio")
 @RequestScoped
 public class ConsultorioMB {
-	@Inject ConsultorioDao dao;
-	
-	private List<Consultorio> listaConsultorios = new ArrayList<>();
+	@EJB
+	ConsultorioDao dao;
+
 	private Consultorio consultorio = new Consultorio();
+
 	
-	public List<Consultorio> getListaConsultorios() {
-		listaConsultorios = dao.findConsultorios();
-		return listaConsultorios;
-	}
-	public void setListaConsultorios(List<Consultorio> listaConsultorios) {
-		this.listaConsultorios = listaConsultorios;
-	}
-	public Consultorio getConsultorio() {
+	
+	public Consultorio getconsultorio() {
 		return consultorio;
 	}
-	public void setConsultorio(Consultorio consultorio) {
+
+	public void setconsultorio(Consultorio consultorio) {
 		this.consultorio = consultorio;
 	}
-	
-	public String addNewConsultorio() {
-		dao.addConsultorio(consultorio);
-		listaConsultorios = dao.findConsultorios();
-		return "listadeconsultorios";
+
+	private void clearObjects() {
+		this.consultorio = new Consultorio();
+
 	}
 	
-	public String removeConsultorio(){
-		dao.removeConsultorio(consultorio);
-		listaConsultorios = dao.findConsultorios();
-		return "listadeconsultorios";
+	
+	public List<Consultorio> getconsultorios(){
+		return dao.listarconsultorio();
 	}
+	
+	public List<Consultorio> getListaconsultorios(){
+		return this.getconsultorios();
+	}
+
+	public void gravar(){
+		
+		dao.save(consultorio);
+		clearObjects();
+		
+		
+	}
+
 }

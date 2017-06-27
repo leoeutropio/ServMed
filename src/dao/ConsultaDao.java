@@ -1,54 +1,40 @@
 package dao;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import dominio.Consulta;
 
+@Stateless
 public class ConsultaDao {
-	List<Consulta> consultas;
-	private EntityManager entityManager;
+	@PersistenceContext(unitName="ServMed")
+	private EntityManager manager;
 	
-	public ConsultaDao(){
-		this.consultas = new ArrayList<Consulta>();
-	}
 	
-	public Consulta searchConsulta(Consulta a){
-		for(Consulta aux:this.consultas){
-			if(aux.equals(aux))
-				return aux;
+	public Consulta save(Consulta consulta){
+		try{
+			manager.persist(consulta);
+			System.out.println("consulta persistida com sucesso!");
+		}catch(Exception e){
+			e.printStackTrace();
 		}
-		return null;
+		return consulta;
 	}
 	
-	public boolean addConsulta(Consulta a){
-		if(searchConsulta(a) == null){
-			this.consultas.add(a);
-			return true;
-		}
-		return false;
+	public List<Consulta> listarConsulta(){
+		TypedQuery<Consulta> query = manager.createQuery("Selected c from Consulta c", Consulta.class);
+		List<Consulta> consultas = query.getResultList();
+		return consultas;
 	}
 	
-	public List<Consulta> findConsultas() {
-		TypedQuery<Consulta> query = entityManager.createNamedQuery("findAllConsultas", Consulta.class);
-		return query.getResultList();
-	}
-	
-	
-	public boolean removeConsulta(Consulta a){
-		return this.consultas.remove(searchConsulta(a));	}
-	
-	public void listConsulta(){
-		for(Consulta aux: this.consultas){
-			System.out.println("-------------------------");
-			System.out.println(aux.getLocal());
-			System.out.println(aux.getMedico());
-			System.out.println(aux.getHorario());
-			System.out.println(aux.getPaciente());
-		}
+	public Consulta searchById(Integer id){
+		Consulta consulta = manager.find(Consulta.class, id);
+		return consulta;
 	}
 
 }

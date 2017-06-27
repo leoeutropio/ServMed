@@ -3,6 +3,7 @@ package MB;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -13,35 +14,42 @@ import dominio.Consulta;
 @Named(value = "controleConsulta")
 @RequestScoped
 public class ConsultaMB {
-	@Inject ConsultaDao dao;
+	@EJB
+	ConsultaDao dao;
+
+	private Consulta cunsulta = new Consulta();
+
 	
-	private List<Consulta> listaConsultas = new ArrayList<>();
-	private Consulta consulta = new Consulta();
 	
-	public List<Consulta> getListaConsultas() {
-		listaConsultas = dao.findConsultas();
-		return listaConsultas;
-	}
-	public void setListaConsultas(List<Consulta> listaConsultas) {
-		this.listaConsultas = listaConsultas;
-	}
 	public Consulta getConsulta() {
-		return consulta;
+		return cunsulta;
 	}
-	public void setConsulta(Consulta consulta) {
-		this.consulta = consulta;
+
+	public void setcunsulta(Consulta cunsulta) {
+		this.cunsulta = cunsulta;
+	}
+
+	private void clearObjects() {
+		this.cunsulta = new Consulta();
+
 	}
 	
-	public String addNewConsulta() {
-		dao.addConsulta(consulta);
-		listaConsultas = dao.findConsultas();
-		return "listadeconsultas";
+	
+	public List<Consulta> getcunsultas(){
+		return dao.listarConsulta();
 	}
 	
-	public String removeConsulta(){
-		dao.removeConsulta(consulta);
-		listaConsultas = dao.findConsultas();
-		return "listadeconsultas";
+	public List<Consulta> getListacunsultas(){
+		return this.getcunsultas();
 	}
+
+	public void gravar(){
+		
+		dao.save(cunsulta);
+		clearObjects();
+		
+		
+	}
+
 	
 }

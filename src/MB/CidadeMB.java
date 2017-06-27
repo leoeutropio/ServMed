@@ -3,6 +3,7 @@ package MB;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -13,35 +14,42 @@ import dominio.Cidade;
 @Named(value = "controleCidade")
 @RequestScoped
 public class CidadeMB {
-	@Inject CidadeDao dao;
 	
-	private List<Cidade> listaCidades = new ArrayList<>();
+	@EJB
+	CidadeDao dao;
+
 	private Cidade cidade = new Cidade();
+
 	
-	public List<Cidade> getListaCidades() {
-		listaCidades = dao.findCidades();
-		return listaCidades;
-	}
-	public void setListaCidades(List<Cidade> listaCidades) {
-		this.listaCidades = listaCidades;
-	}
+	
 	public Cidade getCidade() {
 		return cidade;
 	}
-	public void setCidade(Cidade cidade) {
+
+	public void setcidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
 
-	public String addNewCidade() {
-		dao.addCidade(cidade);
-		listaCidades = dao.findCidades();
-		return "listadecidades";
+	private void clearObjects() {
+		this.cidade = new Cidade();
+
 	}
 	
-	public String removeCidade(){
-		dao.removeCidade(cidade);
-		listaCidades = dao.findCidades();
-		return "listadecidades";
+	
+	public List<Cidade> getcidades(){
+		return dao.listarCidade();
 	}
+	
+	public List<Cidade> getListacidades(){
+		return this.getcidades();
+	}
+
+	public void gravar(){
+		
+		dao.save(cidade);
+		clearObjects();
+		
+	}
+
 	
 }

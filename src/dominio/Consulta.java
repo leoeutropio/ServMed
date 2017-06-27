@@ -1,11 +1,34 @@
 package dominio;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Consulta{
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+@Entity
+@SequenceGenerator(name = "SEQ_CONSULTA", initialValue = 1, allocationSize = 1, sequenceName = "seq_consulta")
+public class Consulta implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_CONSULTA")
+    @Column(name = "id_Cautela")
+	private int id;
+	
     Consultorio local;
     Medico medico;
     Paciente paciente;
+   // @Temporal(TemporalType.DATE)
     Date horario;
     boolean agendada;
     String avaliacao;
@@ -61,6 +84,10 @@ public class Consulta{
 
 	public void setAgendada(boolean agendada) {
 		this.agendada = agendada;
+	}
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
     

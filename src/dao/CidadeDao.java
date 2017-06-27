@@ -1,45 +1,40 @@
 package dao;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import dominio.Cidade;
 
+@Stateless
 public class CidadeDao {
-	private List<Cidade> cidades;
-	private EntityManager entityManager;
+	@PersistenceContext(unitName="ServMed")
+	private EntityManager manager;
 	
-	public CidadeDao(){
-		this.cidades = new ArrayList<Cidade>();
-	}
 	
-	public Cidade searchCidade(Cidade a){
-		for(Cidade aux:this.cidades){
-			if(a.equals(aux))
-				return aux;
+	public Cidade save(Cidade cidade){
+		try{
+			manager.persist(cidade);
+			System.out.println("cidade persistida com sucesso!");
+		}catch(Exception e){
+			e.printStackTrace();
 		}
-		return null;
+		return cidade;
 	}
 	
-	public boolean addCidade(Cidade a){
-		if(searchCidade(a) == null){
-			this.cidades.add(a);
-			return true;
-		}else{
-			return false;			
-		}
+	public List<Cidade> listarCidade(){
+		TypedQuery<Cidade> query = manager.createQuery("Selected c from Cidade c", Cidade.class);
+		List<Cidade> cidades = query.getResultList();
+		return cidades;
 	}
 	
-	public boolean removeCidade(Cidade aux){
-		return this.cidades.remove(searchCidade(aux));
-	}
-	
-	public List<Cidade> findCidades() {
-		TypedQuery<Cidade> query = entityManager.createNamedQuery("findAllCidades", Cidade.class);
-		return query.getResultList();
+	public Cidade searchById(Integer id){
+		Cidade cidade = manager.find(Cidade.class, id);
+		return cidade;
 	}
 	
 }
