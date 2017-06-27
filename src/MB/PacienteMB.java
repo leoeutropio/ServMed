@@ -21,7 +21,7 @@ public class PacienteMB {
 
 	
 	
-	public Paciente getpaciente() {
+	public Paciente getPaciente() {
 		return paciente;
 	}
 
@@ -35,12 +35,12 @@ public class PacienteMB {
 	}
 	
 	
-	public List<Paciente> getpacientes(){
+	public List<Paciente> getPacientes(){
 		return dao.listarpaciente();
 	}
 	
-	public List<Paciente> getListapacientes(){
-		return this.getpacientes();
+	public List<Paciente> getListaPacientes(){
+		return this.getPacientes();
 	}
 
 	public void gravar(){

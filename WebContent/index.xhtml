@@ -4,33 +4,14 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head>Lista de Medicos</h:head>
+<h:head>Inicio</h:head>
 <h:body>
-	<h:dataTable value="#{controleMedico.medicos}"  var="med"
-		border="1">
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Name" />
-			</f:facet>
-			<h:outputText />
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Especialização" />
-			</f:facet>
-			<h:outputText />
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Expediente" />
-			</f:facet>  
-		</h:column>
-	</h:dataTable>
-	
-	<h:form>
-		<h:link outcome="addmedicos.xhtml" value="Adicionar médicos" />
-		
-	</h:form>   
-	
+<br></br>
+		<h:form>
+			<h:commandButton value="Paciente" action = "PacientesServ"/>
+		                             
+   			<h:commandButton value="Medico" action = "MedicoServ"/> 
+		</h:form> 
+               
 </h:body>
 </html>

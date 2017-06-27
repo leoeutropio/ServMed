@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<h:body>
+<h1>Serviços do Médico</h1>
+ <h1>Lista de Médicos</h1>
+	<h:dataTable value="#{controleMedico.medico}"  var="med"
+		border="1">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Name" />
+			</f:facet>
+		<h:outputText value="#{med.nome}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="CPF" />
+			</f:facet>
+			<h:outputText value="#{med.cpf}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Email" />
+			</f:facet>  
+		<h:outputText value="#{med.email}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Telefone" />
+			</f:facet>  
+			<h:outputText value="#{med.telefone}"/>
+		</h:column>
+		 <h:column>
+			<f:facet name="header">
+				<h:outputText value="Remover" />
+			</f:facet>
+				<h:commandButton value="Remover"                                  
+                     action="#{controleMedico.remove(med)}"/>   
+		</h:column>  
+	</h:dataTable>
+	
+	<h:form>
+		<h:link outcome="cadastroconsultorio.xhtml" value="Adicionar médicos" />	
+	</h:form>   
+	
+	<h1>Adicionar novo médico</h1>
+	<h:panelGrid columns="6" >
+         <h:outputLabel value="Name : "/>
+         	<h:inputText value="#{controleMedico.medico.nome}"/>
+         <h:outputLabel value="CRM : "/>
+         	<h:inputText value="#{controleMedico.medico.crm}"/>
+         <h:outputLabel value="CPF : "/>
+         	<h:inputText value="#{controleMedico.medico.cpf}"/>
+         <h:outputLabel value="Email : "/>
+         	<h:inputText value="#{controleMedico.medico.email}"/>
+         <h:outputLabel value="Data de nascimento : "/>
+         	<h:inputText value="#{controleMedico.medico.aniversario}"/>
+         <h:outputLabel value="Endereço : "/>
+         	<h:inputText value="#{controleMedico.medico.endereco}"/>
+         <h:outputLabel value="Telefone : "/>
+         	<h:inputText value="#{controleMedico.medico.telefone}">
+         	</h:inputText>          
+     </h:panelGrid>
+     
+    
+     	<h:commandButton action="#{controleMedico.gravar}" value="Adicionar" />
+ 
+     
+	     <br></br>
+	     <br></br>
+	     
+	     <h1>Lista de pacientes do médico</h1>
+	     
+	     <h:dataTable value="#{controlePaciente.paciente}"  var="paciente"
+		border="1">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Name" />
+			</f:facet>
+			<h:outputText value="#{paciente.nome}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Cpf" />
+			</f:facet>
+			<h:outputText value="#{paciente.cpf}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Plano" />
+			</f:facet>  
+				<h:outputText value="#{paciente.plano}"/>
+		</h:column>	
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Email" />
+			</f:facet>
+				<h:outputText value="#{paciente.email}"/> 
+		</h:column>  
+	</h:dataTable>
+	
+	     <br></br>
+	     <br></br>
+	     
+	  	<h:form>
+			<h:commandButton value="Consultório" action = "cadastroconsultorio"/>
+		</h:form>    
+		
+	     <br></br>
+	     <br></br>
+     
+     <h:form>
+		<h:link outcome="index.xhtml" value="Voltar" />	
+	</h:form>   
+	
+</h:body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<body>
+
+	<h1>Lista de consultório</h1>
+	     
+	     <h:dataTable value="#{controleConsultorio.consultorio}"  var="cons"
+		border="1">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Name" />
+			</f:facet>
+			<h:outputText value="#{cons.nome}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Endereço" />
+			</f:facet>
+			<h:outputText value="#{cons.endereco}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Telefone" />
+			</f:facet>  
+				<h:outputText value="#{cons.telefone}"/>
+		</h:column>	
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Médicos" />
+			</f:facet>
+				<h:outputText/>
+		</h:column>  
+	</h:dataTable>
+
+<h1>Cadastrar consultório</h1>
+	<h:panelGrid columns="6" >
+	<h:outputLabel value="Endereço : "/>
+         	<h:inputText value="#{controleConsultorio.consultorio.endereco}"/>
+         <h:outputLabel value="Name do consultório: "/>
+         	<h:inputText value="#{controleConsultorio.consultorio.nome}"/>
+         <h:outputLabel value="Telefone : "/>
+         		<h:inputText value="#{controleConsultorio.consultorio.telefone}"/>
+     </h:panelGrid>
+     <br></br>
+    <br></br>
+     <h:form>
+     	<h:commandButton action="#{controleConsultorio.gravar}" value="Adicionar" />
+     </h:form>
+     <br></br>
+     <br></br>
+     <h:form>
+		<h:link outcome="MedicoServ.xhtml" value="Voltar" />	
+	</h:form>   
+</body>
+</html>

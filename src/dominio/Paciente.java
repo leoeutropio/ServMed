@@ -9,9 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@SequenceGenerator(name = "SEQ_PACIENTE", initialValue = 1, allocationSize = 1, sequenceName = "seq_paciente")
 public class Paciente extends Pessoa implements Serializable{
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PACIENTE")
 	@Column(name = "id_Paciente")
 	private int id;
 	String plano;

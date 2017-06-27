@@ -4,15 +4,20 @@ import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 
 @Entity
+@SequenceGenerator(name = "SEQ_PESSOA", initialValue = 1, allocationSize = 1, sequenceName = "seq_pessoa")
 public class Pessoa implements Serializable{
-
-    String nome;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PESSOA")
     @Id
+    Integer id;
     String cpf;
+	String nome;
     String email;
     Date aniversario;
     String endereco;
