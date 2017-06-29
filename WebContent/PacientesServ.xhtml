@@ -23,19 +23,19 @@
 			<f:facet name="header">
 				<h:outputText value="Cpf" />
 			</f:facet>
-			<h:outputText />
+			<h:outputText value="#{paciente.cpf}" />
 		</h:column>
 		<h:column>
 			<f:facet name="header">
 				<h:outputText value="Plano" />
 			</f:facet>  
-		</h:column>	
+		</h:column>
+			<h:outputText value="#{paciente.plano}" />	
 		<h:column>
 			<f:facet name="header">
 				<h:outputText value="Remover" />
 			</f:facet>
-				<h:commandButton value="Remover"                                  
-                     action="#{controlePaciente.remove(paciente)}"/>   
+				<h:commandButton value="Remover" action="#{controlePaciente.remove(paciente)}"/>   
 		</h:column>  
 	</h:dataTable>
      
@@ -55,9 +55,12 @@
          	<h:inputText value="#{controlePaciente.paciente.endereco}"/>
          <h:outputLabel value="Telefone : "/>
          	<h:inputText value="#{controlePaciente.paciente.telefone}"/>
-         	<h:commandButton action="#{controlePaciente.gravar}" value="Adicionar" />
      </h:panelGrid>
-
+     
+     <h:form>
+			<h:commandButton  value="Adicionar" action="#{controlePaciente.gravar}"></h:commandButton>
+	 </h:form>		
+	 
 	 		<br></br>
 	    	<br></br>
 	    	

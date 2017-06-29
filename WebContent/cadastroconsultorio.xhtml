@@ -38,7 +38,7 @@
 	</h:dataTable>
 
 <h1>Cadastrar consultório</h1>
-	<h:panelGrid columns="6" >
+	<h:panelGrid columns="3" >
 	<h:outputLabel value="Endereço : "/>
          	<h:inputText value="#{controleConsultorio.consultorio.endereco}"/>
          <h:outputLabel value="Name do consultório: "/>
@@ -46,13 +46,17 @@
          <h:outputLabel value="Telefone : "/>
          		<h:inputText value="#{controleConsultorio.consultorio.telefone}"/>
      </h:panelGrid>
-     <br></br>
+     
     <br></br>
+    <br></br>
+    
      <h:form>
      	<h:commandButton action="#{controleConsultorio.gravar}" value="Adicionar" />
      </h:form>
+     
      <br></br>
      <br></br>
+     
      <h:form>
 		<h:link outcome="MedicoServ.xhtml" value="Voltar" />	
 	</h:form>   

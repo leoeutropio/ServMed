@@ -3,12 +3,14 @@ package dao;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import dominio.*;
+import dominio.Paciente;
 
+@Dependent
 @Stateless
 public class PacienteDao {
 	@PersistenceContext(unitName="ServMed")

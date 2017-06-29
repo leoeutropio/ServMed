@@ -49,9 +49,9 @@ public class Consulta implements Serializable{
         this.local = local;
     }
 
-    public String getMedico(){
-        return this.medico.getNome();
-    }
+   // public String getMedico(){
+     //   return this.medico.getNome();
+    //}
     public void setMedico(Medico medico){
         this.medico = medico;
     }

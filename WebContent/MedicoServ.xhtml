@@ -30,9 +30,41 @@
 		</h:column>
 		<h:column>
 			<f:facet name="header">
+				<h:outputText value="Aniversário" />
+			</f:facet>  
+			<h:outputText value="#{med.aniversario}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Endereço" />
+			</f:facet>  
+			<h:outputText value="#{med.endereco}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
 				<h:outputText value="Telefone" />
 			</f:facet>  
 			<h:outputText value="#{med.telefone}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="CRM" />
+			</f:facet>  
+			<h:outputText value="#{med.crm}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Especialização" />
+			</f:facet>  
+			<h:outputText value="#{med.crm}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Expediente" />
+			</f:facet>  
+			<h:outputText value="#{med.expediente}"/>
 		</h:column>
 		 <h:column>
 			<f:facet name="header">
@@ -43,16 +75,11 @@
 		</h:column>  
 	</h:dataTable>
 	
-	<h:form>
-		<h:link outcome="cadastroconsultorio.xhtml" value="Adicionar médicos" />	
-	</h:form>   
-	
+
 	<h1>Adicionar novo médico</h1>
 	<h:panelGrid columns="6" >
          <h:outputLabel value="Name : "/>
          	<h:inputText value="#{controleMedico.medico.nome}"/>
-         <h:outputLabel value="CRM : "/>
-         	<h:inputText value="#{controleMedico.medico.crm}"/>
          <h:outputLabel value="CPF : "/>
          	<h:inputText value="#{controleMedico.medico.cpf}"/>
          <h:outputLabel value="Email : "/>
@@ -62,13 +89,18 @@
          <h:outputLabel value="Endereço : "/>
          	<h:inputText value="#{controleMedico.medico.endereco}"/>
          <h:outputLabel value="Telefone : "/>
-         	<h:inputText value="#{controleMedico.medico.telefone}">
-         	</h:inputText>          
+         	<h:inputText value="#{controleMedico.medico.telefone}"/>  
+         <h:outputLabel value="CRM : "/>
+         	<h:inputText value="#{controleMedico.medico.crm}"/>    
+         <h:outputLabel value="Especialização : "/>
+         	<h:inputText value="#{controleMedico.medico.especializacao}"/>
+         <h:outputLabel value="Expediente : "/>
+         	<h:inputText value="#{controleMedico.medico.expediente}"/>   	   
      </h:panelGrid>
      
-    
-     	<h:commandButton action="#{controleMedico.gravar}" value="Adicionar" />
- 
+     <h:form>
+     	<h:commandButton value="Adicionar" action="#{controleMedico.gravar}" ></h:commandButton>
+	 </h:form>
      
 	     <br></br>
 	     <br></br>

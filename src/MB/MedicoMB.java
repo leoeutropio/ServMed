@@ -31,9 +31,7 @@ public class MedicoMB {
 
 	private void clearObjects() {
 		this.medico = new Medico();
-
 	}
-	
 	
 	public List<Medico> getmedicos(){
 		return dao.listarmedico();
@@ -44,11 +42,8 @@ public class MedicoMB {
 	}
 
 	public void gravar(){
-		
 		dao.save(medico);
 		clearObjects();
-		
-		
 	}
 
 }

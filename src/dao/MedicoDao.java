@@ -3,6 +3,7 @@ package dao;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.RequestScoped;
@@ -10,6 +11,7 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.UserTransaction;
 
 import dominio.Medico;
 
@@ -18,7 +20,7 @@ import dominio.Medico;
 public class MedicoDao {
 	@PersistenceContext(unitName="ServMed")
 	private EntityManager manager;
-	
+
 	
 	public Medico save(Medico medico){
 		try{
